@@ -1,0 +1,3 @@
+tests/*.vmx
+.venv
+.vscode
