@@ -3,3 +3,5 @@ tests/*.vmx
 .vscode
 
 src/**/__pycache__
+
+*.log
