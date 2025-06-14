@@ -14,6 +14,7 @@ def Transform(name: str, priority:int = 0):
     """Add a function to the transformations list"""
 
     def dec(func):
+        func = (name, func)
         global TRANSFORMATIONS
         try:
             l = TRANSFORMATIONS[priority]
@@ -23,7 +24,7 @@ def Transform(name: str, priority:int = 0):
         
         return func
 
-    LOGGER.info(f"Loaded module '{name}'")
+    LOGGER.info(f"Loading module '{name}'")
 
     return dec
 
@@ -38,12 +39,13 @@ def import_from_path(module_name, file_path):
     return module
 
 
-
-def run_transforms(transformations_path: Path, vmf_file: VMF):
-    for _file in transformations_path.rglob("*.py"):
+def load_transforms(transforms_path: Path):
+    for _file in transforms_path.rglob("*.py"):
         import_from_path(_file.stem, _file)
 
+def run_transforms(vmf_file: VMF):
     for priority in sorted(TRANSFORMATIONS.keys())[::-1]:
-        for func in TRANSFORMATIONS[priority]:
+        for name, func in TRANSFORMATIONS[priority]:
+            LOGGER.info(f"Running transform |{name}|")
             func(vmf_file)
     
