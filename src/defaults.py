@@ -10,13 +10,19 @@ Special options:
 Write this message
 
 -write_cfg_default
-Writes the default precompiler_cfg.vdf file next to the executable. Use if the config has been corrupted somehow and needs to be reset."""
+Writes the default precompiler_cfg.vdf file next to the executable. Use if the config has been corrupted somehow and needs to be reset.
+
+-no-remove
+Doesn't remove the <map_name>_precompiled.vmf file after processing."""
 
 
 
 
 DEFAULT_CFG = '''"Config" {
-    // Prefix path, the base path which every path below inherits from. Relative to the executable of the precompiler
+    // Main folder name, where all your mod assets are stored in.
+    // For example for P2CE it's "Portal 2 Community Edition"
+    // This will set the base path of all the paths below to .../Portal-Singularity-Collapse/
+    // The folder name here will get searched through all parents of the map path specified when invoking precompiler.
     "prefix_path" ""
 
     // Location of the VBSP executable
