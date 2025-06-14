@@ -5,3 +5,5 @@ tests/*.vmx
 src/**/__pycache__
 
 *.log
+
+precompiler_cfg.vdf
