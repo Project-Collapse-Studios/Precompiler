@@ -7,3 +7,8 @@ src/**/__pycache__
 *.log
 
 precompiler_cfg.vdf
+
+precompiler.build
+precompiler.dist
+precompiler.onefile-build
+precompiler.exe
