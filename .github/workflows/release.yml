@@ -64,6 +64,7 @@ jobs:
         with:
           nuitka-version: main
           script-name: src/precompiler.py
+          mode: onefile
 
       - name:  Copy and export default cfg
         run: |
