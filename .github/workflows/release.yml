@@ -71,12 +71,14 @@ jobs:
               cp precompiler.bin dist/precompiler.bin
               cd dist
               ./precompiler.bin -write_cfg_default
+              rm precompiler.log
 
             elif [ "$RUNNER_OS" == "Windows" ]; then
               mkdir dist
               robocopy precompiler.exe dist\precompiler.exe
               cd dist
               .\precompiler.exe -write_cfg_default
+              del precompiler.log
 
             else
               echo "$RUNNER_OS not supported"
@@ -104,5 +106,5 @@ jobs:
         if: ${{ github.event.inputs.version == '' }}
         with:
           tag_name: ${{ steps.previoustag.outputs.tag }}
-          files: Release-Win64.zip
+          files: Release-${{ runner.os }}.zip
           fail_on_unmatched_files: true
