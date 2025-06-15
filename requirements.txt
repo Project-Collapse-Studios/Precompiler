@@ -1,1 +1,2 @@
-git+https://github.com/StrataSource/srctools.git
+git+https://github.com/Project-Collapse-Studios/srctools.git
+nuitka
