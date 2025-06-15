@@ -61,7 +61,7 @@ jobs:
           python -m pip install -r requirements.txt
   
       - run: |
-          Yes | python -m nuitka --onefile src/precompiler.py
+          python -m nuitka --onefile src/precompiler.py
 
       - name:  Copy and export default cfg
         run: |
