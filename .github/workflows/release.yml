@@ -60,8 +60,8 @@ jobs:
   
       - uses: Nuitka/Nuitka-Action@main
         with:
-        nuitka-version: main
-        script-name: src/precompiler.py
+          nuitka-version: main
+          script-name: src/precompiler.py
 
       - name:  Copy and export default cfg
         run: |
