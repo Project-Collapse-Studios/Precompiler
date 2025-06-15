@@ -1,12 +1,3 @@
-# Compilation mode, support OS-specific options
-# nuitka-project-if: {OS} in ("Windows", "Linux", "Darwin", "FreeBSD"):
-#    nuitka-project: --onefile
-# nuitka-project-else:
-#    nuitka-project: --mode=standalonealone
-
-
-
-
 from sys import argv, stdout
 from pathlib import Path
 import logging
