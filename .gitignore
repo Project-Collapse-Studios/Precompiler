@@ -4,11 +4,22 @@ tests/*.vmx
 
 src/**/__pycache__
 
+# Logs
 *.log
 
+# Config
 precompiler_cfg.vdf
 
+
+# Don't include build directories
 precompiler.build
 precompiler.dist
 precompiler.onefile-build
 precompiler.exe
+
+
+# Don't include any maps etc
+*_precompiled.*
+*.bsp
+*.prt
+*.lin
