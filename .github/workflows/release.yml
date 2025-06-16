@@ -75,7 +75,7 @@ jobs:
 
             elif [ "$RUNNER_OS" == "Windows" ]; then
               mkdir dist
-              robocopy precompiler.exe dist\\
+              copy precompiler.exe dist\\
               cd dist
               .\precompiler.exe -write_cfg_default
               del precompiler.log
