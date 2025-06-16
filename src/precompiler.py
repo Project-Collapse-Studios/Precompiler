@@ -150,7 +150,12 @@ def main():
         remove(new_path)
 
     for file_ in new_path.parent.rglob(f"{map_name}_precompiled.*"):
-        rename(file_, file_.parent.joinpath(f"{map_name}"+file_.suffix))
+        new_file = file_.parent.joinpath(f"{map_name}"+file_.suffix)
+
+        if new_file.is_file():
+            remove(new_file)
+
+        rename(file_, new_file)
 
     LOGGER.info("Finished.")
     
