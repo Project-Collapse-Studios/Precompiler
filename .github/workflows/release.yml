@@ -75,10 +75,10 @@ jobs:
 
             elif [ "$RUNNER_OS" == "Windows" ]; then
               mkdir dist
-              copy precompiler.exe dist\\
+              cp precompiler.exe dist/precompiler.exe
               cd dist
-              .\precompiler.exe -write_cfg_default
-              del precompiler.log
+              ./precompiler.exe -write_cfg_default
+              rm precompiler.log
 
             else
               echo "$RUNNER_OS not supported"
