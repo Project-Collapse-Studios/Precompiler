@@ -9,17 +9,19 @@ done
 mkdir dist
 mkdir dist/precompiler_transforms
 
-for i in build/*.pyd; do
-    cp $i dist/precompiler_transforms
-done
-
 if [ "$RUNNER_OS" == "Linux" ]; then
+    for i in build/*.so; do
+        cp $i dist/precompiler_transforms
+    done
     chmod +x build/precompiler.bin
     build/precompiler.bin -write_cfg_default
     cp build/precompiler.bin dist/
     cp build/precompiler_cfg.vdf dist/
 
 elif [ "$RUNNER_OS" == "Windows" ]; then
+    for i in build/*.pyd; do
+        cp $i dist/precompiler_transforms
+    done
     build/precompiler.exe -write_cfg_default
     cp build/precompiler.exe dist/
     cp build/precompiler_cfg.vdf dist/
