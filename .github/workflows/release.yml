@@ -60,38 +60,14 @@ jobs:
         run: |
           python -m pip install -r requirements.txt
   
-      - run: |
-          echo Yes | python -m nuitka --onefile src/precompiler.py
-
-      - name:  Copy and export default cfg
-        run: |
-            if [ "$RUNNER_OS" == "Linux" ]; then
-              mkdir dist
-              chmod +x precompiler.bin
-              cp precompiler.bin dist/precompiler.bin
-              cd dist
-              ./precompiler.bin -write_cfg_default
-              rm precompiler.log
-
-            elif [ "$RUNNER_OS" == "Windows" ]; then
-              mkdir dist
-              cp precompiler.exe dist/precompiler.exe
-              cd dist
-              ./precompiler.exe -write_cfg_default
-              rm precompiler.log
-
-            else
-              echo "$RUNNER_OS not supported"
-              exit 1
-            fi
+      - run: ./build.sh
         shell: bash
-
 
       - name: Pack files
         uses: TheDoctor0/zip-release@0.7.6
         with:
           filename: Release-${{ runner.os }}.zip
-          path: ./dist/
+          directory: ./dist/
 
       - run: git fetch --tags origin
       
