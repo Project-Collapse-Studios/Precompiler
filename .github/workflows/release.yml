@@ -63,7 +63,7 @@ jobs:
       - run: |
           chmod +x ./build.sh
           ./build.sh
-          
+
         shell: bash
 
       - name: Pack files
@@ -85,5 +85,5 @@ jobs:
         if: ${{ github.event.inputs.version == '' }}
         with:
           tag_name: ${{ steps.previoustag.outputs.tag }}
-          files: Release-${{ runner.os }}.zip
+          files: dist/Release-${{ runner.os }}.zip
           fail_on_unmatched_files: true
