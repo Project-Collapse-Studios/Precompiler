@@ -23,3 +23,7 @@ precompiler.exe
 *.bsp
 *.prt
 *.lin
+
+# Compiled modules
+*.pyd
+*.pyi
