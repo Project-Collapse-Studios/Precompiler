@@ -2,10 +2,9 @@
 
 from srctools import VMF
 from pathlib import Path
-import importlib.util
-import sys
+import importlib
 import logging
-
+import pkgutil
 
 TRANSFORMATIONS: dict[int, list] = {}
 LOGGER = logging.getLogger("[Transformations]")
@@ -28,20 +27,12 @@ def Transform(name: str, priority:int = 0):
 
     return dec
 
-    
 
-# "Borrowed" from the importlib wiki
-def import_from_path(module_name, file_path):
-    spec = importlib.util.spec_from_file_location(module_name, file_path)
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[module_name] = module
-    spec.loader.exec_module(module)
-    return module
 
 
 def load_transforms(transforms_path: Path):
-    for _file in transforms_path.rglob("*.py"):
-        import_from_path(_file.stem, _file)
+    for item in pkgutil.iter_modules([transforms_path]):
+        importlib.import_module(transforms_path.name + "." + item.name)
 
 def run_transforms(vmf_file: VMF):
     for priority in sorted(TRANSFORMATIONS.keys())[::-1]:
