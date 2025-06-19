@@ -106,7 +106,7 @@ def main():
     
 
 
-    PATHS["transforms"] = PATHS["prefix_path"].joinpath(cfg["transforms_loc"])
+    PATHS["transforms"] = OUR_PATH.joinpath(cfg["transforms_loc"])
     if not PATHS["transforms"].is_dir():
         LOGGER.error(f"Specified path for transforms is invalid: {PATHS['transforms']}")
         raise FileNotFoundError
