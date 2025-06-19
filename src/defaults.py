@@ -28,7 +28,7 @@ DEFAULT_CFG = '''"Config" {
     // Location of the VBSP executable
     "vbsp_path" "you_have_to_set_this_manually_in_precompiler_cfg.vdf"
 
-    // Location of the transforms folder
+    // Location of the transforms folder, this is relative to the directory of the precompiler executable!
     "transforms_loc" "precompiler_transforms/" 
 }
 '''

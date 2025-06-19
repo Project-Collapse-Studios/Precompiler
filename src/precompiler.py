@@ -1,4 +1,4 @@
-from sys import argv, stdout, exit
+from sys import argv, stdout, exit, platform
 from pathlib import Path
 import logging
 from logging.handlers import RotatingFileHandler
@@ -93,6 +93,11 @@ def main():
     LOGGER.info(f"Prefix path is: {PATHS['prefix_path']}")
 
     PATHS["vbsp"] = PATHS["prefix_path"].joinpath(cfg["vbsp_path"])
+
+    if platform == "linux":
+        PATHS["vbsp"] = PATHS["vbsp"].with_suffix("") # Remove the exe suffix
+
+
     if not PATHS["vbsp"].is_file():
         LOGGER.error(f"Cannot find VBSP executable at {PATHS['vbsp']}")
         raise FileNotFoundError
@@ -101,7 +106,7 @@ def main():
     
 
 
-    PATHS["transforms"] = PATHS["prefix_path"].joinpath(cfg["transforms_loc"])
+    PATHS["transforms"] = OUR_PATH.joinpath(cfg["transforms_loc"])
     if not PATHS["transforms"].is_dir():
         LOGGER.error(f"Specified path for transforms is invalid: {PATHS['transforms']}")
         raise FileNotFoundError
