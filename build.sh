@@ -15,7 +15,7 @@ if [ "$RUNNER_OS" == "Linux" ]; then
     done
     chmod +x build/precompiler.bin
     build/precompiler.bin -write_cfg_default
-    cp build/precompiler.bin dist/
+    cp build/precompiler.bin dist/precompiler
     cp build/precompiler_cfg.vdf dist/
 
 elif [ "$RUNNER_OS" == "Windows" ]; then
